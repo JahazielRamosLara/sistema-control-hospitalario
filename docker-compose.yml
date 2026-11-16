@@ -1,0 +1,48 @@
+# Sistema de Control Hospitalario — stack completo
+#   docker compose up -d --build      → http://localhost:8080
+#   docker compose up -d db           → solo Postgres, para desarrollo local (puerto 5433)
+name: control-hospitalario
+
+services:
+  db:
+    image: postgres:16.6-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: control_hospitalario
+      POSTGRES_USER: ${POSTGRES_USER:-hospital}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-hospital}
+      TZ: America/Mexico_City
+    ports:
+      - "${DB_PORT:-5433}:5432" # 5433 para no chocar con un Postgres instalado en el equipo
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d control_hospitalario"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  backend:
+    build: ./backend
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-hospital}:${POSTGRES_PASSWORD:-hospital}@db:5432/control_hospitalario
+      NOMBRE_HOSPITAL: ${NOMBRE_HOSPITAL:-Sistema de Control Hospitalario}
+      SEED_DATOS_EJEMPLO: ${SEED_DATOS_EJEMPLO:-1}
+      TZ: America/Mexico_City
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "${API_PORT:-8000}:8000"
+
+  frontend:
+    build: ./frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "${WEB_PORT:-8080}:80"
+
+volumes:
+  pgdata:

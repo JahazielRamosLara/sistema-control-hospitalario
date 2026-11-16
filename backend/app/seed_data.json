@@ -1,0 +1,1386 @@
+{
+ "servicios": [
+  {
+   "nombre": "Urgencias",
+   "ubicacion": "Planta baja - Ala A",
+   "camas_censables": 24,
+   "jefe": "Dr. Esteban Carrillo Nava"
+  },
+  {
+   "nombre": "Medicina Interna",
+   "ubicacion": "Piso 2 - Ala B",
+   "camas_censables": 40,
+   "jefe": "Dra. Leticia Ibarra Moncada"
+  },
+  {
+   "nombre": "Cirugia General",
+   "ubicacion": "Piso 3 - Ala A",
+   "camas_censables": 30,
+   "jefe": "Dr. Armando Quiroz Lezama"
+  },
+  {
+   "nombre": "Pediatria",
+   "ubicacion": "Piso 1 - Ala C",
+   "camas_censables": 28,
+   "jefe": "Dra. Norma Beltran Olivares"
+  },
+  {
+   "nombre": "Ginecologia y Obstetricia",
+   "ubicacion": "Piso 1 - Ala B",
+   "camas_censables": 32,
+   "jefe": "Dra. Rocio Salgado Herrera"
+  },
+  {
+   "nombre": "Traumatologia y Ortopedia",
+   "ubicacion": "Piso 3 - Ala B",
+   "camas_censables": 26,
+   "jefe": "Dr. Hugo Zamarripa Coss"
+  },
+  {
+   "nombre": "Cardiologia",
+   "ubicacion": "Piso 4 - Ala A",
+   "camas_censables": 18,
+   "jefe": "Dr. Felipe Andrade Rosales"
+  },
+  {
+   "nombre": "Terapia Intensiva (UCI)",
+   "ubicacion": "Piso 4 - Ala C",
+   "camas_censables": 12,
+   "jefe": "Dra. Ivette Maldonado Pineda"
+  },
+  {
+   "nombre": "Oncologia",
+   "ubicacion": "Piso 5 - Ala A",
+   "camas_censables": 20,
+   "jefe": "Dr. Ramon Escalante Vidal"
+  },
+  {
+   "nombre": "Consulta Externa",
+   "ubicacion": "Planta baja - Ala C",
+   "camas_censables": 0,
+   "jefe": "Dra. Claudia Fierro Tapia"
+  }
+ ],
+ "medicos": [
+  {
+   "id": 1,
+   "nombre": "Dr. Esteban Carrillo Nava",
+   "especialidad": "Urgenciologia",
+   "cedula_profesional": "7841203",
+   "turno": "Matutino"
+  },
+  {
+   "id": 2,
+   "nombre": "Dra. Leticia Ibarra Moncada",
+   "especialidad": "Medicina Interna",
+   "cedula_profesional": "6930471",
+   "turno": "Matutino"
+  },
+  {
+   "id": 3,
+   "nombre": "Dr. Armando Quiroz Lezama",
+   "especialidad": "Cirugia General",
+   "cedula_profesional": "7102558",
+   "turno": "Vespertino"
+  },
+  {
+   "id": 4,
+   "nombre": "Dra. Norma Beltran Olivares",
+   "especialidad": "Pediatria",
+   "cedula_profesional": "6688134",
+   "turno": "Matutino"
+  },
+  {
+   "id": 5,
+   "nombre": "Dra. Rocio Salgado Herrera",
+   "especialidad": "Ginecoobstetricia",
+   "cedula_profesional": "7255690",
+   "turno": "Nocturno"
+  },
+  {
+   "id": 6,
+   "nombre": "Dr. Hugo Zamarripa Coss",
+   "especialidad": "Traumatologia",
+   "cedula_profesional": "7390812",
+   "turno": "Vespertino"
+  },
+  {
+   "id": 7,
+   "nombre": "Dr. Felipe Andrade Rosales",
+   "especialidad": "Cardiologia",
+   "cedula_profesional": "6842077",
+   "turno": "Matutino"
+  },
+  {
+   "id": 8,
+   "nombre": "Dra. Ivette Maldonado Pineda",
+   "especialidad": "Medicina Critica",
+   "cedula_profesional": "7513946",
+   "turno": "Nocturno"
+  },
+  {
+   "id": 9,
+   "nombre": "Dr. Ramon Escalante Vidal",
+   "especialidad": "Oncologia Medica",
+   "cedula_profesional": "7024883",
+   "turno": "Matutino"
+  },
+  {
+   "id": 10,
+   "nombre": "Dra. Claudia Fierro Tapia",
+   "especialidad": "Medicina Familiar",
+   "cedula_profesional": "6971325",
+   "turno": "Vespertino"
+  },
+  {
+   "id": 11,
+   "nombre": "Dr. Sergio Narvaez Buendia",
+   "especialidad": "Anestesiologia",
+   "cedula_profesional": "7466201",
+   "turno": "Jornada acumulada"
+  },
+  {
+   "id": 12,
+   "nombre": "Dra. Paulina Robles Cisneros",
+   "especialidad": "Neumologia",
+   "cedula_profesional": "7188470",
+   "turno": "Matutino"
+  }
+ ],
+ "tipos_atencion": [
+  {
+   "nombre": "Consulta de primera vez",
+   "categoria": "Consulta"
+  },
+  {
+   "nombre": "Consulta subsecuente",
+   "categoria": "Consulta"
+  },
+  {
+   "nombre": "Valoracion en urgencias",
+   "categoria": "Urgencias"
+  },
+  {
+   "nombre": "Nota de evolucion",
+   "categoria": "Hospitalizacion"
+  },
+  {
+   "nombre": "Curacion de herida",
+   "categoria": "Procedimiento"
+  },
+  {
+   "nombre": "Toma de laboratorio",
+   "categoria": "Auxiliar de diagnostico"
+  },
+  {
+   "nombre": "Estudio de imagen (Rx)",
+   "categoria": "Auxiliar de diagnostico"
+  },
+  {
+   "nombre": "Tomografia computarizada",
+   "categoria": "Auxiliar de diagnostico"
+  },
+  {
+   "nombre": "Ultrasonido",
+   "categoria": "Auxiliar de diagnostico"
+  },
+  {
+   "nombre": "Procedimiento quirurgico",
+   "categoria": "Cirugia"
+  },
+  {
+   "nombre": "Administracion de medicamento IV",
+   "categoria": "Tratamiento"
+  },
+  {
+   "nombre": "Transfusion sanguinea",
+   "categoria": "Tratamiento"
+  },
+  {
+   "nombre": "Interconsulta",
+   "categoria": "Consulta"
+  },
+  {
+   "nombre": "Egreso / alta medica",
+   "categoria": "Egreso"
+  }
+ ],
+ "riesgo": [
+  {
+   "eventos_minimos": 0,
+   "nivel": "ESTABLE",
+   "semaforo": "Verde",
+   "accion": "Seguimiento de rutina conforme al plan de manejo"
+  },
+  {
+   "eventos_minimos": 1,
+   "nivel": "OBSERVACION",
+   "semaforo": "Amarillo",
+   "accion": "Vigilancia por turno y nota de evolucion diaria"
+  },
+  {
+   "eventos_minimos": 3,
+   "nivel": "RIESGO MODERADO",
+   "semaforo": "Naranja",
+   "accion": "Valoracion por el medico tratante en las proximas 24 h"
+  },
+  {
+   "eventos_minimos": 5,
+   "nivel": "RIESGO ALTO",
+   "semaforo": "Rojo",
+   "accion": "Interconsulta y notificacion a la jefatura de servicio"
+  },
+  {
+   "eventos_minimos": 10,
+   "nivel": "CRITICO",
+   "semaforo": "Vino",
+   "accion": "Valorar pase a UCI y notificar al Comite de Calidad y Seguridad del Paciente"
+  }
+ ],
+ "pacientes": [
+  {
+   "expediente": "EXP-0001",
+   "nombre": "Alvarado Rincon Beatriz Elena",
+   "servicio": "Medicina Interna",
+   "medico_tratante": "Dra. Leticia Ibarra Moncada",
+   "fecha_nacimiento": "1968-03-14",
+   "sexo": "F",
+   "tipo_sangre": "O+",
+   "alergias": "Penicilina",
+   "contacto_emergencia": "Rincon Mora Alicia",
+   "telefono": "33 1842 7701"
+  },
+  {
+   "expediente": "EXP-0002",
+   "nombre": "Barrera Huerta Jose Manuel",
+   "servicio": "Cardiologia",
+   "medico_tratante": "Dr. Felipe Andrade Rosales",
+   "fecha_nacimiento": "1955-11-02",
+   "sexo": "M",
+   "tipo_sangre": "A+",
+   "alergias": "Ninguna conocida",
+   "contacto_emergencia": "Barrera Lopez Teresa",
+   "telefono": "33 2290 1164"
+  },
+  {
+   "expediente": "EXP-0003",
+   "nombre": "Caballero Nunez Ximena",
+   "servicio": "Pediatria",
+   "medico_tratante": "Dra. Norma Beltran Olivares",
+   "fecha_nacimiento": "2017-06-21",
+   "sexo": "F",
+   "tipo_sangre": "O-",
+   "alergias": "Lactosa",
+   "contacto_emergencia": "Nunez Prado Fernanda",
+   "telefono": "33 1076 5538"
+  },
+  {
+   "expediente": "EXP-0004",
+   "nombre": "Delgadillo Pena Ricardo",
+   "servicio": "Traumatologia y Ortopedia",
+   "medico_tratante": "Dr. Hugo Zamarripa Coss",
+   "fecha_nacimiento": "1991-01-09",
+   "sexo": "M",
+   "tipo_sangre": "B+",
+   "alergias": "Ninguna conocida",
+   "contacto_emergencia": "Pena Solis Marisol",
+   "telefono": "33 3318 9042"
+  },
+  {
+   "expediente": "EXP-0005",
+   "nombre": "Escobedo Trujillo Ana Lucia",
+   "servicio": "Ginecologia y Obstetricia",
+   "medico_tratante": "Dra. Rocio Salgado Herrera",
+   "fecha_nacimiento": "1996-08-30",
+   "sexo": "F",
+   "tipo_sangre": "A-",
+   "alergias": "Sulfas",
+   "contacto_emergencia": "Trujillo Vega Ernesto",
+   "telefono": "33 2745 6610"
+  },
+  {
+   "expediente": "EXP-0006",
+   "nombre": "Fajardo Olmos Gerardo",
+   "servicio": "Urgencias",
+   "medico_tratante": "Dr. Esteban Carrillo Nava",
+   "fecha_nacimiento": "1979-04-17",
+   "sexo": "M",
+   "tipo_sangre": "AB+",
+   "alergias": "Ninguna conocida",
+   "contacto_emergencia": "Olmos Rivas Patricia",
+   "telefono": "33 1593 2287"
+  },
+  {
+   "expediente": "EXP-0007",
+   "nombre": "Gallegos Mendiola Sofia",
+   "servicio": "Oncologia",
+   "medico_tratante": "Dr. Ramon Escalante Vidal",
+   "fecha_nacimiento": "1972-12-05",
+   "sexo": "F",
+   "tipo_sangre": "O+",
+   "alergias": "Yodo",
+   "contacto_emergencia": "Mendiola Castro Luis",
+   "telefono": "33 3864 7719"
+  },
+  {
+   "expediente": "EXP-0008",
+   "nombre": "Hinojosa Vargas Emiliano",
+   "servicio": "Medicina Interna",
+   "medico_tratante": "Dra. Leticia Ibarra Moncada",
+   "fecha_nacimiento": "1984-09-28",
+   "sexo": "M",
+   "tipo_sangre": "B-",
+   "alergias": "Ninguna conocida",
+   "contacto_emergencia": "Vargas Luna Adriana",
+   "telefono": "33 2017 4453"
+  },
+  {
+   "expediente": "EXP-0009",
+   "nombre": "Islas Camarena Regina",
+   "servicio": "Consulta Externa",
+   "medico_tratante": "Dra. Claudia Fierro Tapia",
+   "fecha_nacimiento": "2001-02-11",
+   "sexo": "F",
+   "tipo_sangre": "A+",
+   "alergias": "Aines",
+   "contacto_emergencia": "Camarena Ruiz Hector",
+   "telefono": "33 1428 3376"
+  },
+  {
+   "expediente": "EXP-0010",
+   "nombre": "Jaramillo Ponce Alberto",
+   "servicio": "Cirugia General",
+   "medico_tratante": "Dr. Armando Quiroz Lezama",
+   "fecha_nacimiento": "1963-07-23",
+   "sexo": "M",
+   "tipo_sangre": "O+",
+   "alergias": "Ninguna conocida",
+   "contacto_emergencia": "Ponce Arredondo Silvia",
+   "telefono": "33 3671 8805"
+  },
+  {
+   "expediente": "EXP-0011",
+   "nombre": "Lozano Berrueta Mariana",
+   "servicio": "Terapia Intensiva (UCI)",
+   "medico_tratante": "Dra. Ivette Maldonado Pineda",
+   "fecha_nacimiento": "1988-10-04",
+   "sexo": "F",
+   "tipo_sangre": "AB-",
+   "alergias": "Latex",
+   "contacto_emergencia": "Berrueta Diaz Omar",
+   "telefono": "33 2384 1192"
+  },
+  {
+   "expediente": "EXP-0012",
+   "nombre": "Marroquin Esquivel Daniel",
+   "servicio": "Urgencias",
+   "medico_tratante": "Dr. Esteban Carrillo Nava",
+   "fecha_nacimiento": "2005-05-19",
+   "sexo": "M",
+   "tipo_sangre": "A+",
+   "alergias": "Ninguna conocida",
+   "contacto_emergencia": "Esquivel Nava Rosa",
+   "telefono": "33 1960 7724"
+  },
+  {
+   "expediente": "EXP-0013",
+   "nombre": "Nunez Carvajal Valeria",
+   "servicio": "Pediatria",
+   "medico_tratante": "Dra. Norma Beltran Olivares",
+   "fecha_nacimiento": "2014-03-08",
+   "sexo": "F",
+   "tipo_sangre": "O+",
+   "alergias": "Huevo",
+   "contacto_emergencia": "Carvajal Sierra Diana",
+   "telefono": "33 3205 4461"
+  },
+  {
+   "expediente": "EXP-0014",
+   "nombre": "Ochoa Zendejas Fernando",
+   "servicio": "Cardiologia",
+   "medico_tratante": "Dr. Felipe Andrade Rosales",
+   "fecha_nacimiento": "1949-08-12",
+   "sexo": "M",
+   "tipo_sangre": "B+",
+   "alergias": "Ninguna conocida",
+   "contacto_emergencia": "Zendejas Rios Guadalupe",
+   "telefono": "33 2731 6098"
+  },
+  {
+   "expediente": "EXP-0015",
+   "nombre": "Peralta Monroy Andrea",
+   "servicio": "Ginecologia y Obstetricia",
+   "medico_tratante": "Dra. Rocio Salgado Herrera",
+   "fecha_nacimiento": "1993-06-27",
+   "sexo": "F",
+   "tipo_sangre": "O-",
+   "alergias": "Ninguna conocida",
+   "contacto_emergencia": "Monroy Caro Javier",
+   "telefono": "33 1847 2250"
+  },
+  {
+   "expediente": "EXP-0016",
+   "nombre": "Quintero Salazar Ignacio",
+   "servicio": "Medicina Interna",
+   "medico_tratante": "Dra. Leticia Ibarra Moncada",
+   "fecha_nacimiento": "1976-01-31",
+   "sexo": "M",
+   "tipo_sangre": "A-",
+   "alergias": "Metamizol",
+   "contacto_emergencia": "Salazar Ibanez Lorena",
+   "telefono": "33 3092 8817"
+  },
+  {
+   "expediente": "EXP-0017",
+   "nombre": "Robledo Villaseñor Camila",
+   "servicio": "Oncologia",
+   "medico_tratante": "Dr. Ramon Escalante Vidal",
+   "fecha_nacimiento": "1981-11-16",
+   "sexo": "F",
+   "tipo_sangre": "AB+",
+   "alergias": "Ninguna conocida",
+   "contacto_emergencia": "Villasenor Gil Raul",
+   "telefono": "33 2568 3304"
+  },
+  {
+   "expediente": "EXP-0018",
+   "nombre": "Sandoval Arrieta Mauricio",
+   "servicio": "Cirugia General",
+   "medico_tratante": "Dr. Armando Quiroz Lezama",
+   "fecha_nacimiento": "1970-02-06",
+   "sexo": "M",
+   "tipo_sangre": "O+",
+   "alergias": "Ninguna conocida",
+   "contacto_emergencia": "Arrieta Pinto Elsa",
+   "telefono": "33 1739 9426"
+  },
+  {
+   "expediente": "EXP-0019",
+   "nombre": "Tovar Benitez Lucia",
+   "servicio": "Consulta Externa",
+   "medico_tratante": "Dra. Claudia Fierro Tapia",
+   "fecha_nacimiento": "1998-09-02",
+   "sexo": "F",
+   "tipo_sangre": "B+",
+   "alergias": "Polen",
+   "contacto_emergencia": "Benitez Cruz Arturo",
+   "telefono": "33 3450 1183"
+  },
+  {
+   "expediente": "EXP-0020",
+   "nombre": "Urbina Castañeda Rodrigo",
+   "servicio": "Traumatologia y Ortopedia",
+   "medico_tratante": "Dr. Hugo Zamarripa Coss",
+   "fecha_nacimiento": "2000-12-20",
+   "sexo": "M",
+   "tipo_sangre": "A+",
+   "alergias": "Ninguna conocida",
+   "contacto_emergencia": "Castaneda Lira Norma",
+   "telefono": "33 2186 7735"
+  },
+  {
+   "expediente": "EXP-0021",
+   "nombre": "Valenzuela Prieto Fernanda",
+   "servicio": "Terapia Intensiva (UCI)",
+   "medico_tratante": "Dra. Ivette Maldonado Pineda",
+   "fecha_nacimiento": "1966-04-25",
+   "sexo": "F",
+   "tipo_sangre": "O+",
+   "alergias": "Morfina",
+   "contacto_emergencia": "Prieto Aguilar Cesar",
+   "telefono": "33 1624 5570"
+  },
+  {
+   "expediente": "EXP-0022",
+   "nombre": "Wong Ceballos Patricio",
+   "servicio": "Medicina Interna",
+   "medico_tratante": "Dra. Leticia Ibarra Moncada",
+   "fecha_nacimiento": "1959-10-13",
+   "sexo": "M",
+   "tipo_sangre": "B-",
+   "alergias": "Ninguna conocida",
+   "contacto_emergencia": "Ceballos Mena Irma",
+   "telefono": "33 3817 2249"
+  },
+  {
+   "expediente": "EXP-0023",
+   "nombre": "Yepez Landeros Monserrat",
+   "servicio": "Pediatria",
+   "medico_tratante": "Dra. Norma Beltran Olivares",
+   "fecha_nacimiento": "2019-01-07",
+   "sexo": "F",
+   "tipo_sangre": "A+",
+   "alergias": "Ninguna conocida",
+   "contacto_emergencia": "Landeros Ochoa Brenda",
+   "telefono": "33 2903 6681"
+  },
+  {
+   "expediente": "EXP-0024",
+   "nombre": "Zavala Mercado Octavio",
+   "servicio": "Urgencias",
+   "medico_tratante": "Dr. Esteban Carrillo Nava",
+   "fecha_nacimiento": "1987-07-29",
+   "sexo": "M",
+   "tipo_sangre": "O-",
+   "alergias": "Aspirina",
+   "contacto_emergencia": "Mercado Soto Veronica",
+   "telefono": "33 1375 4806"
+  },
+  {
+   "expediente": "EXP-0025",
+   "nombre": "Acevedo Pliego Renata",
+   "servicio": "Cardiologia",
+   "medico_tratante": "Dr. Felipe Andrade Rosales",
+   "fecha_nacimiento": "1974-05-03",
+   "sexo": "F",
+   "tipo_sangre": "A+",
+   "alergias": "Ninguna conocida",
+   "contacto_emergencia": "Pliego Rangel Martin",
+   "telefono": "33 3642 1157"
+  },
+  {
+   "expediente": "EXP-0026",
+   "nombre": "Bustamante Gaytan Leonardo",
+   "servicio": "Oncologia",
+   "medico_tratante": "Dr. Ramon Escalante Vidal",
+   "fecha_nacimiento": "1962-03-22",
+   "sexo": "M",
+   "tipo_sangre": "B+",
+   "alergias": "Contraste",
+   "contacto_emergencia": "Gaytan Rosas Alicia",
+   "telefono": "33 2459 8873"
+  },
+  {
+   "expediente": "EXP-0027",
+   "nombre": "Cordova Linares Ximena Paola",
+   "servicio": "Ginecologia y Obstetricia",
+   "medico_tratante": "Dra. Rocio Salgado Herrera",
+   "fecha_nacimiento": "1990-11-11",
+   "sexo": "F",
+   "tipo_sangre": "O+",
+   "alergias": "Ninguna conocida",
+   "contacto_emergencia": "Linares Duarte Pablo",
+   "telefono": "33 1082 3964"
+  },
+  {
+   "expediente": "EXP-0028",
+   "nombre": "Duarte Figueroa Santiago",
+   "servicio": "Cirugia General",
+   "medico_tratante": "Dr. Armando Quiroz Lezama",
+   "fecha_nacimiento": "2003-08-18",
+   "sexo": "M",
+   "tipo_sangre": "AB+",
+   "alergias": "Ninguna conocida",
+   "contacto_emergencia": "Figueroa Mota Celia",
+   "telefono": "33 3796 5420"
+  },
+  {
+   "expediente": "EXP-0029",
+   "nombre": "Elizalde Navarro Paulina",
+   "servicio": "Consulta Externa",
+   "medico_tratante": "Dra. Claudia Fierro Tapia",
+   "fecha_nacimiento": "1995-02-14",
+   "sexo": "F",
+   "tipo_sangre": "A-",
+   "alergias": "Ninguna conocida",
+   "contacto_emergencia": "Navarro Tello Jaime",
+   "telefono": "33 2630 7112"
+  },
+  {
+   "expediente": "EXP-0030",
+   "nombre": "Figueroa Alcantar Joaquin",
+   "servicio": "Terapia Intensiva (UCI)",
+   "medico_tratante": "Dra. Ivette Maldonado Pineda",
+   "fecha_nacimiento": "1952-06-09",
+   "sexo": "M",
+   "tipo_sangre": "O+",
+   "alergias": "Ninguna conocida",
+   "contacto_emergencia": "Alcantar Rios Dolores",
+   "telefono": "33 1517 8846"
+  },
+  {
+   "expediente": "EXP-0031",
+   "nombre": "Zúñiga Herrera Valeria",
+   "servicio": "Medicina Interna",
+   "medico_tratante": "Dra. Leticia Ibarra Moncada",
+   "fecha_nacimiento": "1971-04-18",
+   "sexo": "F",
+   "tipo_sangre": "O+",
+   "alergias": "Penicilina",
+   "contacto_emergencia": "Herrera Lomelí Daniel",
+   "telefono": "33 2648 1193"
+  }
+ ],
+ "atenciones": [
+  {
+   "expediente": "EXP-0001",
+   "tipo_atencion": "Consulta de primera vez",
+   "medico_id": 2,
+   "turno": "Matutino",
+   "triage": "III - Amarillo (Urgente)",
+   "nota_clinica": "Descontrol glucemico, HbA1c 9.4%. Refiere poliuria y perdida de peso.",
+   "plan_manejo": "Ajuste de insulina basal. Cita en 15 dias.",
+   "fecha": "2026-07-12",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0001",
+   "tipo_atencion": "Toma de laboratorio",
+   "medico_id": 2,
+   "turno": "Matutino",
+   "triage": "IV - Verde (Menor urgente)",
+   "nota_clinica": "Control de laboratorio: glucosa 268 mg/dL, creatinina 1.1.",
+   "plan_manejo": "Continuar esquema. Valoracion nutricional.",
+   "fecha": "2026-07-27",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0001",
+   "tipo_atencion": "Consulta subsecuente",
+   "medico_id": 2,
+   "turno": "Matutino",
+   "triage": "III - Amarillo (Urgente)",
+   "nota_clinica": "Persiste descontrol pese a ajuste. Edema de miembros inferiores.",
+   "plan_manejo": "Interconsulta a nefrologia.",
+   "fecha": "2026-08-19",
+   "evento_critico": true
+  },
+  {
+   "expediente": "EXP-0001",
+   "tipo_atencion": "Interconsulta",
+   "medico_id": 12,
+   "turno": "Matutino",
+   "triage": "III - Amarillo (Urgente)",
+   "nota_clinica": "Interconsulta neumologia por disnea de medianos esfuerzos.",
+   "plan_manejo": "Espirometria y oximetria nocturna.",
+   "fecha": "2026-09-03",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0002",
+   "tipo_atencion": "Valoracion en urgencias",
+   "medico_id": 1,
+   "turno": "Matutino",
+   "triage": "I - Rojo (Resucitacion)",
+   "nota_clinica": "Dolor precordial opresivo de 40 min, irradiado a brazo izquierdo.",
+   "plan_manejo": "Protocolo de dolor toracico. ECG y troponinas seriadas.",
+   "fecha": "2026-07-05",
+   "evento_critico": true
+  },
+  {
+   "expediente": "EXP-0002",
+   "tipo_atencion": "Estudio de imagen (Rx)",
+   "medico_id": 7,
+   "turno": "Matutino",
+   "triage": "II - Naranja (Emergencia)",
+   "nota_clinica": "Rx de torax con cardiomegalia grado II.",
+   "plan_manejo": "Ecocardiograma transtoracico.",
+   "fecha": "2026-07-05",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0002",
+   "tipo_atencion": "Nota de evolucion",
+   "medico_id": 7,
+   "turno": "Matutino",
+   "triage": "II - Naranja (Emergencia)",
+   "nota_clinica": "Evolucion estacionaria. FEVI 38%. Clase funcional NYHA III.",
+   "plan_manejo": "Inicio de IECA y betabloqueador. Vigilancia estrecha.",
+   "fecha": "2026-07-06",
+   "evento_critico": true
+  },
+  {
+   "expediente": "EXP-0002",
+   "tipo_atencion": "Administracion de medicamento IV",
+   "medico_id": 7,
+   "turno": "Vespertino",
+   "triage": "II - Naranja (Emergencia)",
+   "nota_clinica": "Administracion de furosemida IV por congestion pulmonar.",
+   "plan_manejo": "Balance hidrico estricto cada 8 h.",
+   "fecha": "2026-07-07",
+   "evento_critico": true
+  },
+  {
+   "expediente": "EXP-0002",
+   "tipo_atencion": "Consulta subsecuente",
+   "medico_id": 7,
+   "turno": "Matutino",
+   "triage": "III - Amarillo (Urgente)",
+   "nota_clinica": "Mejoria clinica. Disminucion de edema.",
+   "plan_manejo": "Egreso programado con control en consulta externa.",
+   "fecha": "2026-07-11",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0002",
+   "tipo_atencion": "Egreso / alta medica",
+   "medico_id": 7,
+   "turno": "Matutino",
+   "triage": "IV - Verde (Menor urgente)",
+   "nota_clinica": "Alta medica. Paciente estable, hemodinamicamente compensado.",
+   "plan_manejo": "Control en 7 dias. Dieta hiposodica.",
+   "fecha": "2026-07-12",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0002",
+   "tipo_atencion": "Consulta subsecuente",
+   "medico_id": 7,
+   "turno": "Matutino",
+   "triage": "III - Amarillo (Urgente)",
+   "nota_clinica": "Reingreso a consulta por disnea paroxistica nocturna.",
+   "plan_manejo": "Ajuste de diuretico. Holter 24 h.",
+   "fecha": "2026-08-28",
+   "evento_critico": true
+  },
+  {
+   "expediente": "EXP-0002",
+   "tipo_atencion": "Nota de evolucion",
+   "medico_id": 7,
+   "turno": "Matutino",
+   "triage": "II - Naranja (Emergencia)",
+   "nota_clinica": "Descompensacion aguda. Requiere oxigeno suplementario.",
+   "plan_manejo": "Hospitalizacion en cardiologia.",
+   "fecha": "2026-09-14",
+   "evento_critico": true
+  },
+  {
+   "expediente": "EXP-0003",
+   "tipo_atencion": "Consulta de primera vez",
+   "medico_id": 4,
+   "turno": "Matutino",
+   "triage": "IV - Verde (Menor urgente)",
+   "nota_clinica": "Cuadro febril de 3 dias, odinofagia. Faringe hiperemica.",
+   "plan_manejo": "Amoxicilina 40 mg/kg/dia por 7 dias.",
+   "fecha": "2026-07-18",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0003",
+   "tipo_atencion": "Consulta subsecuente",
+   "medico_id": 4,
+   "turno": "Matutino",
+   "triage": "IV - Verde (Menor urgente)",
+   "nota_clinica": "Remision del cuadro febril. Buena tolerancia al antibiotico.",
+   "plan_manejo": "Completar esquema. Alta.",
+   "fecha": "2026-07-25",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0004",
+   "tipo_atencion": "Valoracion en urgencias",
+   "medico_id": 1,
+   "turno": "Vespertino",
+   "triage": "II - Naranja (Emergencia)",
+   "nota_clinica": "Caida de altura. Deformidad en antebrazo derecho.",
+   "plan_manejo": "Rx de antebrazo. Inmovilizacion provisional.",
+   "fecha": "2026-08-02",
+   "evento_critico": true
+  },
+  {
+   "expediente": "EXP-0004",
+   "tipo_atencion": "Estudio de imagen (Rx)",
+   "medico_id": 6,
+   "turno": "Vespertino",
+   "triage": "III - Amarillo (Urgente)",
+   "nota_clinica": "Fractura de radio distal desplazada.",
+   "plan_manejo": "Programar reduccion abierta y fijacion interna.",
+   "fecha": "2026-08-02",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0004",
+   "tipo_atencion": "Procedimiento quirurgico",
+   "medico_id": 6,
+   "turno": "Vespertino",
+   "triage": "II - Naranja (Emergencia)",
+   "nota_clinica": "Osteosintesis con placa bloqueada. Sin complicaciones.",
+   "plan_manejo": "Reposo, cabestrillo y analgesia.",
+   "fecha": "2026-08-04",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0004",
+   "tipo_atencion": "Curacion de herida",
+   "medico_id": 6,
+   "turno": "Matutino",
+   "triage": "IV - Verde (Menor urgente)",
+   "nota_clinica": "Curacion de herida quirurgica. Bordes afrontados, sin datos de infeccion.",
+   "plan_manejo": "Retiro de puntos en 7 dias.",
+   "fecha": "2026-08-13",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0004",
+   "tipo_atencion": "Consulta subsecuente",
+   "medico_id": 6,
+   "turno": "Matutino",
+   "triage": "V - Azul (No urgente)",
+   "nota_clinica": "Control postquirurgico. Movilidad conservada.",
+   "plan_manejo": "Inicio de rehabilitacion.",
+   "fecha": "2026-09-01",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0005",
+   "tipo_atencion": "Consulta de primera vez",
+   "medico_id": 5,
+   "turno": "Nocturno",
+   "triage": "IV - Verde (Menor urgente)",
+   "nota_clinica": "Control prenatal, 28 SDG. FCF 142 lpm. Sin actividad uterina.",
+   "plan_manejo": "Laboratorios de tercer trimestre. Cita en 3 semanas.",
+   "fecha": "2026-07-09",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0005",
+   "tipo_atencion": "Ultrasonido",
+   "medico_id": 5,
+   "turno": "Nocturno",
+   "triage": "IV - Verde (Menor urgente)",
+   "nota_clinica": "Ultrasonido obstetrico: feto unico vivo, peso estimado 1,280 g.",
+   "plan_manejo": "Continuar control prenatal.",
+   "fecha": "2026-07-09",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0005",
+   "tipo_atencion": "Consulta subsecuente",
+   "medico_id": 5,
+   "turno": "Nocturno",
+   "triage": "IV - Verde (Menor urgente)",
+   "nota_clinica": "Control prenatal 32 SDG. TA 118/76. Sin edema.",
+   "plan_manejo": "Cita en 2 semanas.",
+   "fecha": "2026-08-06",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0006",
+   "tipo_atencion": "Valoracion en urgencias",
+   "medico_id": 1,
+   "turno": "Matutino",
+   "triage": "II - Naranja (Emergencia)",
+   "nota_clinica": "Herida cortante en region palmar de 6 cm por accidente laboral.",
+   "plan_manejo": "Lavado, exploracion y sutura por planos.",
+   "fecha": "2026-07-21",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0006",
+   "tipo_atencion": "Curacion de herida",
+   "medico_id": 1,
+   "turno": "Matutino",
+   "triage": "IV - Verde (Menor urgente)",
+   "nota_clinica": "Curacion. Herida limpia, sin datos de infeccion.",
+   "plan_manejo": "Retiro de puntos en 10 dias.",
+   "fecha": "2026-07-28",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0007",
+   "tipo_atencion": "Consulta subsecuente",
+   "medico_id": 9,
+   "turno": "Matutino",
+   "triage": "III - Amarillo (Urgente)",
+   "nota_clinica": "Ca de mama estadio IIB. Tercer ciclo de quimioterapia.",
+   "plan_manejo": "Continuar esquema AC-T. Antiemeticos.",
+   "fecha": "2026-07-14",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0007",
+   "tipo_atencion": "Administracion de medicamento IV",
+   "medico_id": 9,
+   "turno": "Matutino",
+   "triage": "III - Amarillo (Urgente)",
+   "nota_clinica": "Administracion de ciclo. Nausea grado 2 posterior.",
+   "plan_manejo": "Ondansetron. Vigilar biometria.",
+   "fecha": "2026-07-14",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0007",
+   "tipo_atencion": "Toma de laboratorio",
+   "medico_id": 9,
+   "turno": "Matutino",
+   "triage": "III - Amarillo (Urgente)",
+   "nota_clinica": "Neutropenia posquimioterapia: neutrofilos 780/uL.",
+   "plan_manejo": "Factor estimulante de colonias. Aislamiento protector.",
+   "fecha": "2026-07-22",
+   "evento_critico": true
+  },
+  {
+   "expediente": "EXP-0007",
+   "tipo_atencion": "Valoracion en urgencias",
+   "medico_id": 1,
+   "turno": "Nocturno",
+   "triage": "II - Naranja (Emergencia)",
+   "nota_clinica": "Fiebre de 38.9 C en paciente neutropenico.",
+   "plan_manejo": "Neutropenia febril. Antibiotico de amplio espectro IV.",
+   "fecha": "2026-07-24",
+   "evento_critico": true
+  },
+  {
+   "expediente": "EXP-0007",
+   "tipo_atencion": "Transfusion sanguinea",
+   "medico_id": 9,
+   "turno": "Matutino",
+   "triage": "II - Naranja (Emergencia)",
+   "nota_clinica": "Hemoglobina 7.2 g/dL. Se transfunde 1 UCE.",
+   "plan_manejo": "Control de biometria post transfusion.",
+   "fecha": "2026-07-26",
+   "evento_critico": true
+  },
+  {
+   "expediente": "EXP-0007",
+   "tipo_atencion": "Consulta subsecuente",
+   "medico_id": 9,
+   "turno": "Matutino",
+   "triage": "III - Amarillo (Urgente)",
+   "nota_clinica": "Recuperacion hematologica. Neutrofilos 2,100/uL.",
+   "plan_manejo": "Reiniciar ciclo con reduccion de dosis al 80%.",
+   "fecha": "2026-08-08",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0007",
+   "tipo_atencion": "Tomografia computarizada",
+   "medico_id": 9,
+   "turno": "Matutino",
+   "triage": "III - Amarillo (Urgente)",
+   "nota_clinica": "TAC de control: respuesta parcial de la lesion primaria.",
+   "plan_manejo": "Continuar protocolo. Valoracion quirurgica.",
+   "fecha": "2026-09-02",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0008",
+   "tipo_atencion": "Consulta de primera vez",
+   "medico_id": 2,
+   "turno": "Matutino",
+   "triage": "IV - Verde (Menor urgente)",
+   "nota_clinica": "Hipertension arterial de reciente diagnostico. TA 158/96.",
+   "plan_manejo": "Losartan 50 mg cada 24 h. Dieta hiposodica.",
+   "fecha": "2026-07-16",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0008",
+   "tipo_atencion": "Consulta subsecuente",
+   "medico_id": 2,
+   "turno": "Matutino",
+   "triage": "V - Azul (No urgente)",
+   "nota_clinica": "TA controlada 128/82. Buena adherencia.",
+   "plan_manejo": "Continuar tratamiento. Control en 3 meses.",
+   "fecha": "2026-08-20",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0009",
+   "tipo_atencion": "Consulta de primera vez",
+   "medico_id": 10,
+   "turno": "Vespertino",
+   "triage": "V - Azul (No urgente)",
+   "nota_clinica": "Cefalea tensional de 2 semanas. Exploracion neurologica normal.",
+   "plan_manejo": "Analgesico y manejo de estres. Higiene del sueno.",
+   "fecha": "2026-07-23",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0010",
+   "tipo_atencion": "Procedimiento quirurgico",
+   "medico_id": 3,
+   "turno": "Vespertino",
+   "triage": "III - Amarillo (Urgente)",
+   "nota_clinica": "Colecistectomia laparoscopica electiva por colelitiasis.",
+   "plan_manejo": "Dieta progresiva. Analgesia. Egreso en 24 h.",
+   "fecha": "2026-07-30",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0010",
+   "tipo_atencion": "Nota de evolucion",
+   "medico_id": 3,
+   "turno": "Vespertino",
+   "triage": "IV - Verde (Menor urgente)",
+   "nota_clinica": "Postoperatorio inmediato sin complicaciones. Tolera via oral.",
+   "plan_manejo": "Alta a domicilio con indicaciones.",
+   "fecha": "2026-07-31",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0011",
+   "tipo_atencion": "Nota de evolucion",
+   "medico_id": 8,
+   "turno": "Nocturno",
+   "triage": "I - Rojo (Resucitacion)",
+   "nota_clinica": "Choque septico de foco abdominal. Requiere aminas vasoactivas.",
+   "plan_manejo": "Norepinefrina en infusion. Antibiotico de amplio espectro.",
+   "fecha": "2026-08-08",
+   "evento_critico": true
+  },
+  {
+   "expediente": "EXP-0011",
+   "tipo_atencion": "Administracion de medicamento IV",
+   "medico_id": 8,
+   "turno": "Nocturno",
+   "triage": "I - Rojo (Resucitacion)",
+   "nota_clinica": "Persiste hipotension pese a volumen. Lactato 4.8 mmol/L.",
+   "plan_manejo": "Escalamiento de aminas. Monitoreo invasivo.",
+   "fecha": "2026-08-09",
+   "evento_critico": true
+  },
+  {
+   "expediente": "EXP-0011",
+   "tipo_atencion": "Tomografia computarizada",
+   "medico_id": 8,
+   "turno": "Matutino",
+   "triage": "I - Rojo (Resucitacion)",
+   "nota_clinica": "TAC abdominal: coleccion en fosa iliaca derecha.",
+   "plan_manejo": "Drenaje percutaneo urgente.",
+   "fecha": "2026-08-09",
+   "evento_critico": true
+  },
+  {
+   "expediente": "EXP-0011",
+   "tipo_atencion": "Procedimiento quirurgico",
+   "medico_id": 3,
+   "turno": "Matutino",
+   "triage": "I - Rojo (Resucitacion)",
+   "nota_clinica": "Laparotomia exploradora. Lavado de cavidad.",
+   "plan_manejo": "Continuar en UCI. Ventilacion mecanica.",
+   "fecha": "2026-08-10",
+   "evento_critico": true
+  },
+  {
+   "expediente": "EXP-0011",
+   "tipo_atencion": "Transfusion sanguinea",
+   "medico_id": 8,
+   "turno": "Nocturno",
+   "triage": "I - Rojo (Resucitacion)",
+   "nota_clinica": "Anemia aguda posquirurgica. Hb 6.8 g/dL.",
+   "plan_manejo": "Transfusion de 2 UCE. Control de hemoglobina.",
+   "fecha": "2026-08-11",
+   "evento_critico": true
+  },
+  {
+   "expediente": "EXP-0011",
+   "tipo_atencion": "Nota de evolucion",
+   "medico_id": 8,
+   "turno": "Matutino",
+   "triage": "II - Naranja (Emergencia)",
+   "nota_clinica": "Mejoria hemodinamica. Retiro progresivo de aminas.",
+   "plan_manejo": "Destete ventilatorio.",
+   "fecha": "2026-08-15",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0012",
+   "tipo_atencion": "Valoracion en urgencias",
+   "medico_id": 1,
+   "turno": "Nocturno",
+   "triage": "II - Naranja (Emergencia)",
+   "nota_clinica": "Policontundido por accidente en motocicleta. Glasgow 14.",
+   "plan_manejo": "TAC de craneo y columna cervical. Observacion 24 h.",
+   "fecha": "2026-08-17",
+   "evento_critico": true
+  },
+  {
+   "expediente": "EXP-0012",
+   "tipo_atencion": "Tomografia computarizada",
+   "medico_id": 1,
+   "turno": "Nocturno",
+   "triage": "III - Amarillo (Urgente)",
+   "nota_clinica": "TAC de craneo sin lesion aguda. Contusiones multiples.",
+   "plan_manejo": "Analgesia. Alta con datos de alarma.",
+   "fecha": "2026-08-17",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0013",
+   "tipo_atencion": "Consulta de primera vez",
+   "medico_id": 4,
+   "turno": "Matutino",
+   "triage": "IV - Verde (Menor urgente)",
+   "nota_clinica": "Dermatitis atopica en brote. Lesiones en pliegues.",
+   "plan_manejo": "Emoliente y corticoide topico de baja potencia.",
+   "fecha": "2026-07-29",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0014",
+   "tipo_atencion": "Consulta subsecuente",
+   "medico_id": 7,
+   "turno": "Matutino",
+   "triage": "III - Amarillo (Urgente)",
+   "nota_clinica": "Fibrilacion auricular con respuesta ventricular controlada.",
+   "plan_manejo": "Anticoagulacion oral. CHA2DS2-VASc 4 puntos.",
+   "fecha": "2026-08-11",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0014",
+   "tipo_atencion": "Toma de laboratorio",
+   "medico_id": 7,
+   "turno": "Matutino",
+   "triage": "IV - Verde (Menor urgente)",
+   "nota_clinica": "INR 2.4 en rango terapeutico.",
+   "plan_manejo": "Mantener dosis. Control mensual.",
+   "fecha": "2026-08-25",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0015",
+   "tipo_atencion": "Consulta subsecuente",
+   "medico_id": 5,
+   "turno": "Nocturno",
+   "triage": "IV - Verde (Menor urgente)",
+   "nota_clinica": "Puerperio fisiologico de 6 semanas. Involucion uterina adecuada.",
+   "plan_manejo": "Alta de control obstetrico. Planificacion familiar.",
+   "fecha": "2026-08-18",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0016",
+   "tipo_atencion": "Consulta de primera vez",
+   "medico_id": 2,
+   "turno": "Matutino",
+   "triage": "IV - Verde (Menor urgente)",
+   "nota_clinica": "Dislipidemia mixta. Colesterol total 268 mg/dL.",
+   "plan_manejo": "Atorvastatina 20 mg. Dieta y ejercicio.",
+   "fecha": "2026-08-21",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0017",
+   "tipo_atencion": "Consulta subsecuente",
+   "medico_id": 9,
+   "turno": "Matutino",
+   "triage": "III - Amarillo (Urgente)",
+   "nota_clinica": "Linfoma no Hodgkin en vigilancia. Sin datos de actividad.",
+   "plan_manejo": "PET-CT de control en 3 meses.",
+   "fecha": "2026-08-26",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0018",
+   "tipo_atencion": "Procedimiento quirurgico",
+   "medico_id": 3,
+   "turno": "Vespertino",
+   "triage": "III - Amarillo (Urgente)",
+   "nota_clinica": "Hernioplastia inguinal derecha con malla.",
+   "plan_manejo": "Reposo relativo 2 semanas. Analgesia.",
+   "fecha": "2026-09-01",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0019",
+   "tipo_atencion": "Consulta de primera vez",
+   "medico_id": 10,
+   "turno": "Vespertino",
+   "triage": "V - Azul (No urgente)",
+   "nota_clinica": "Chequeo anual. Paciente asintomatica.",
+   "plan_manejo": "Laboratorios de rutina y papanicolaou.",
+   "fecha": "2026-09-04",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0020",
+   "tipo_atencion": "Consulta subsecuente",
+   "medico_id": 6,
+   "turno": "Vespertino",
+   "triage": "IV - Verde (Menor urgente)",
+   "nota_clinica": "Esguince de tobillo grado II en fase de rehabilitacion.",
+   "plan_manejo": "Continuar fisioterapia 3 sesiones por semana.",
+   "fecha": "2026-09-08",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0021",
+   "tipo_atencion": "Nota de evolucion",
+   "medico_id": 8,
+   "turno": "Nocturno",
+   "triage": "I - Rojo (Resucitacion)",
+   "nota_clinica": "EPOC exacerbado. Insuficiencia respiratoria tipo II.",
+   "plan_manejo": "Ventilacion mecanica no invasiva. Broncodilatadores.",
+   "fecha": "2026-09-10",
+   "evento_critico": true
+  },
+  {
+   "expediente": "EXP-0021",
+   "tipo_atencion": "Administracion de medicamento IV",
+   "medico_id": 8,
+   "turno": "Nocturno",
+   "triage": "II - Naranja (Emergencia)",
+   "nota_clinica": "Esteroide IV y antibiotico. Mejoria gasometrica parcial.",
+   "plan_manejo": "Continuar VMNI. Fisioterapia pulmonar.",
+   "fecha": "2026-09-11",
+   "evento_critico": true
+  },
+  {
+   "expediente": "EXP-0022",
+   "tipo_atencion": "Consulta subsecuente",
+   "medico_id": 2,
+   "turno": "Matutino",
+   "triage": "IV - Verde (Menor urgente)",
+   "nota_clinica": "Enfermedad renal cronica KDIGO G3b estable.",
+   "plan_manejo": "Control de fosforo y PTH. Dieta hipoproteica.",
+   "fecha": "2026-09-15",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0023",
+   "tipo_atencion": "Consulta de primera vez",
+   "medico_id": 4,
+   "turno": "Matutino",
+   "triage": "IV - Verde (Menor urgente)",
+   "nota_clinica": "Control de nino sano. Desarrollo psicomotor adecuado.",
+   "plan_manejo": "Esquema de vacunacion completo. Cita en 6 meses.",
+   "fecha": "2026-09-16",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0024",
+   "tipo_atencion": "Valoracion en urgencias",
+   "medico_id": 1,
+   "turno": "Vespertino",
+   "triage": "II - Naranja (Emergencia)",
+   "nota_clinica": "Crisis asmatica moderada. Sibilancias generalizadas.",
+   "plan_manejo": "Salbutamol nebulizado y esteroide sistemico.",
+   "fecha": "2026-09-18",
+   "evento_critico": true
+  },
+  {
+   "expediente": "EXP-0025",
+   "tipo_atencion": "Consulta subsecuente",
+   "medico_id": 7,
+   "turno": "Matutino",
+   "triage": "IV - Verde (Menor urgente)",
+   "nota_clinica": "Hipertension controlada. TA 124/78.",
+   "plan_manejo": "Continuar tratamiento. Control semestral.",
+   "fecha": "2026-09-21",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0026",
+   "tipo_atencion": "Tomografia computarizada",
+   "medico_id": 9,
+   "turno": "Matutino",
+   "triage": "III - Amarillo (Urgente)",
+   "nota_clinica": "TAC de control: estabilidad de la lesion hepatica.",
+   "plan_manejo": "Continuar vigilancia. Marcadores tumorales.",
+   "fecha": "2026-09-22",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0027",
+   "tipo_atencion": "Ultrasonido",
+   "medico_id": 5,
+   "turno": "Nocturno",
+   "triage": "IV - Verde (Menor urgente)",
+   "nota_clinica": "USG obstetrico 20 SDG. Estructural sin alteraciones.",
+   "plan_manejo": "Continuar control prenatal mensual.",
+   "fecha": "2026-09-23",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0028",
+   "tipo_atencion": "Consulta subsecuente",
+   "medico_id": 3,
+   "turno": "Vespertino",
+   "triage": "V - Azul (No urgente)",
+   "nota_clinica": "Control postoperatorio tardio. Herida cicatrizada.",
+   "plan_manejo": "Alta definitiva del servicio de cirugia.",
+   "fecha": "2026-09-24",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0029",
+   "tipo_atencion": "Consulta de primera vez",
+   "medico_id": 10,
+   "turno": "Vespertino",
+   "triage": "V - Azul (No urgente)",
+   "nota_clinica": "Lumbalgia mecanica de 1 semana. Sin datos de alarma.",
+   "plan_manejo": "Analgesia, calor local y ejercicios de Williams.",
+   "fecha": "2026-09-25",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0030",
+   "tipo_atencion": "Nota de evolucion",
+   "medico_id": 8,
+   "turno": "Matutino",
+   "triage": "II - Naranja (Emergencia)",
+   "nota_clinica": "Neumonia asociada a ventilador. Cultivo pendiente.",
+   "plan_manejo": "Ajuste de antibiotico segun antibiograma.",
+   "fecha": "2026-09-26",
+   "evento_critico": true
+  },
+  {
+   "expediente": "EXP-0031",
+   "tipo_atencion": "Consulta de primera vez",
+   "medico_id": 2,
+   "turno": "Matutino",
+   "triage": "IV - Verde (Menor urgente)",
+   "nota_clinica": "Astenia y pérdida de peso de 2 meses. TA 136/88.",
+   "plan_manejo": "Biometría hemática y perfil tiroideo. Cita en 10 días.",
+   "fecha": "2026-10-01",
+   "evento_critico": false
+  },
+  {
+   "expediente": "EXP-0031",
+   "tipo_atencion": "Valoracion en urgencias",
+   "medico_id": 1,
+   "turno": "Matutino",
+   "triage": "II - Naranja (Emergencia)",
+   "nota_clinica": "Dolor abdominal intenso, fiebre 38.7 °C.",
+   "plan_manejo": null,
+   "fecha": "2026-10-01",
+   "evento_critico": true
+  },
+  {
+   "expediente": "EXP-0031",
+   "tipo_atencion": "Nota de evolucion",
+   "medico_id": 2,
+   "turno": "Vespertino",
+   "triage": "II - Naranja (Emergencia)",
+   "nota_clinica": "Persiste fiebre. Leucocitos 18,400.",
+   "plan_manejo": null,
+   "fecha": "2026-10-01",
+   "evento_critico": true
+  },
+  {
+   "expediente": "EXP-0031",
+   "tipo_atencion": "Administracion de medicamento IV",
+   "medico_id": 2,
+   "turno": "Nocturno",
+   "triage": "II - Naranja (Emergencia)",
+   "nota_clinica": "Antibiótico IV por proceso infeccioso.",
+   "plan_manejo": null,
+   "fecha": "2026-10-01",
+   "evento_critico": true
+  },
+  {
+   "expediente": "EXP-0031",
+   "tipo_atencion": "Transfusion sanguinea",
+   "medico_id": 8,
+   "turno": "Matutino",
+   "triage": "I - Rojo (Resucitacion)",
+   "nota_clinica": "Hb 6.9 g/dL. Se transfunden 2 UCE.",
+   "plan_manejo": null,
+   "fecha": "2026-10-01",
+   "evento_critico": true
+  },
+  {
+   "expediente": "EXP-0031",
+   "tipo_atencion": "Nota de evolucion",
+   "medico_id": 8,
+   "turno": "Matutino",
+   "triage": "I - Rojo (Resucitacion)",
+   "nota_clinica": "Ingresa a UCI. Requiere apoyo vasopresor.",
+   "plan_manejo": null,
+   "fecha": "2026-10-01",
+   "evento_critico": true
+  }
+ ]
+}
