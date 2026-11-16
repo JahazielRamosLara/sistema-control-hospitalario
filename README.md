@@ -28,11 +28,15 @@ tiene una casilla **Alerta** que decide si cuenta en el indicador del menú.
 
 ## Opción A — Todo con Docker (cualquier equipo)
 
-Solo requiere Docker Desktop.
+Requiere Docker Desktop y git (el repositorio es privado: inicia sesión con `gh auth login` o usa tus credenciales de GitHub).
 
 ```powershell
+git clone https://github.com/JahazielRamosLara/sistema-control-hospitalario.git
+cd sistema-control-hospitalario
 docker compose up -d --build
 ```
+
+Para actualizar después: `git pull` y `docker compose up -d --build`.
 
 | Servicio | URL / puerto |
 |---|---|
