@@ -17,3 +17,11 @@ TIPOS_SANGRE = ["O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-"]
 ESTADOS_PACIENTE = ["Activo", "Hospitalizado", "Alta medica", "Referido", "Defuncion"]
 
 SEMAFOROS = ["Verde", "Amarillo", "Naranja", "Rojo", "Vino"]
+
+# Perfiles de usuario (documentación §2.3)
+ROLES = {
+    "admin": "Administrador del sistema",
+    "jefatura": "Jefatura de servicio",
+    "medico": "Personal médico y de enfermería",
+    "admision": "Trabajo social / admisión",
+}

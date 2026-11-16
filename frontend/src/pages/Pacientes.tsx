@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { api, type Paciente, type Umbral } from '../api'
+import { useAuth } from '../auth'
 import { useCatalogos } from '../catalogos'
 import { PacienteForm } from '../components/PacienteForm'
 import { Cargando, ErrorMsg, Modal, RiesgoBadge } from '../components/ui'
 
 export function Pacientes() {
+  const { puede } = useAuth()
   const { servicios } = useCatalogos()
   const [params, setParams] = useSearchParams()
   const [pacientes, setPacientes] = useState<Paciente[] | null>(null)
@@ -49,9 +51,11 @@ export function Pacientes() {
           <h1>Pacientes</h1>
           <p className="subtitulo">Censo de pacientes y búsqueda por expediente</p>
         </div>
+        {puede('pacientes') && (
         <button className="btn btn-primario" onClick={() => setAlta(true)}>
           Alta de paciente
         </button>
+        )}
       </header>
 
       <div className="filtros">

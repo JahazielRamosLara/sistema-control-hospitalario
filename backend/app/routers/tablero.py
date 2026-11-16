@@ -4,6 +4,7 @@ from sqlalchemy import case, delete, func, select
 from sqlalchemy.orm import Session, selectinload
 
 from ..database import get_db
+from ..seguridad import requiere
 from ..models import Atencion, Medico, Paciente, Servicio, UmbralRiesgo
 from ..riesgo import atenciones_por_paciente, clasificar, eventos_por_paciente, tabla
 from ..schemas import ConteoNivel, ConteoServicio, Indicadores, UmbralIn, UmbralOut
@@ -68,7 +69,7 @@ def obtener_tabla(db: Session = Depends(get_db)):
     return tabla(db)
 
 
-@router.put("/riesgo", response_model=list[UmbralOut])
+@router.put("/riesgo", response_model=list[UmbralOut], dependencies=[Depends(requiere())])
 def reemplazar_tabla(umbrales: list[UmbralIn], db: Session = Depends(get_db)):
     """Reemplaza la escala completa. Se ordena por eventos mínimos; debe iniciar en 0 y no repetir umbrales."""
     if not umbrales:

@@ -1,14 +1,17 @@
 import { useState, type FormEvent } from 'react'
 import { NavLink, Navigate, Route, Routes, useNavigate } from 'react-router-dom'
 import { api } from './api'
+import { useAuth } from './auth'
 import { useCatalogos } from './catalogos'
-import { ErrorMsg } from './components/ui'
+import { ErrorMsg, Modal } from './components/ui'
+import { CambiarPassword } from './pages/Login'
 import { Catalogos } from './pages/Catalogos'
 import { PacienteDetalle } from './pages/PacienteDetalle'
 import { Pacientes } from './pages/Pacientes'
 import { Seguimiento } from './pages/Seguimiento'
 import { TablaRiesgo } from './pages/TablaRiesgo'
 import { Tablero } from './pages/Tablero'
+import { Usuarios } from './pages/Usuarios'
 
 const NAV = [
   { to: '/', etiqueta: 'Menú' },
@@ -58,6 +61,8 @@ function BuscadorExpediente() {
 
 export default function App() {
   const { error } = useCatalogos()
+  const { usuario, salir, puede } = useAuth()
+  const [cambiarPwd, setCambiarPwd] = useState(false)
 
   return (
     <div className="app">
@@ -70,10 +75,20 @@ export default function App() {
               <small>Seguimiento clínico y riesgo del paciente</small>
             </span>
           </div>
-          <BuscadorExpediente />
+          <div className="cabecera-derecha">
+            <BuscadorExpediente />
+            <div className="sesion">
+              <span>
+                <strong>{usuario?.nombre}</strong>
+                <small>{usuario?.rol_nombre}</small>
+              </span>
+              <button className="btn-texto" onClick={() => setCambiarPwd(true)}>Contraseña</button>
+              <button className="btn-texto" onClick={() => void salir()}>Salir</button>
+            </div>
+          </div>
         </div>
         <nav className="navegacion">
-          {NAV.map((n) => (
+          {[...NAV, ...(puede('usuarios') ? [{ to: '/usuarios', etiqueta: 'Usuarios' }] : [])].map((n) => (
             <NavLink key={n.to} to={n.to} end={n.to === '/'}>
               {n.etiqueta}
             </NavLink>
@@ -92,9 +107,14 @@ export default function App() {
           <Route path="/seguimiento" element={<Seguimiento />} />
           <Route path="/catalogos" element={<Catalogos />} />
           <Route path="/riesgo" element={<TablaRiesgo />} />
+          {puede('usuarios') && <Route path="/usuarios" element={<Usuarios />} />}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
+
+      <Modal titulo="Cambiar contraseña" abierto={cambiarPwd} onCerrar={() => setCambiarPwd(false)} ancho={460}>
+        <CambiarPassword onListo={() => setCambiarPwd(false)} />
+      </Modal>
 
       <footer className="pie">
         v1.0 · Datos de ejemplo ficticios · No sustituye al expediente clínico institucional (NOM-004-SSA3-2012)

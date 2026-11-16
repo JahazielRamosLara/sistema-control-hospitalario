@@ -5,6 +5,7 @@ from sqlalchemy.orm import Session
 
 from .. import constantes
 from ..database import get_db
+from ..seguridad import requiere
 from ..models import Atencion, Medico, Paciente, Servicio, TipoAtencion
 from ..schemas import (
     MedicoIn,
@@ -55,7 +56,7 @@ def listar_servicios(db: Session = Depends(get_db)):
     return [_servicio_out(s) for s in db.scalars(select(Servicio).order_by(Servicio.id))]
 
 
-@router.post("/servicios", response_model=ServicioOut, status_code=201)
+@router.post("/servicios", response_model=ServicioOut, status_code=201, dependencies=[Depends(requiere())])
 def crear_servicio(datos: ServicioIn, db: Session = Depends(get_db)):
     if datos.jefe_id is not None:
         _obtener(db, Medico, datos.jefe_id, "Médico")
@@ -66,7 +67,7 @@ def crear_servicio(datos: ServicioIn, db: Session = Depends(get_db)):
     return _servicio_out(s)
 
 
-@router.put("/servicios/{servicio_id}", response_model=ServicioOut)
+@router.put("/servicios/{servicio_id}", response_model=ServicioOut, dependencies=[Depends(requiere())])
 def editar_servicio(servicio_id: int, datos: ServicioIn, db: Session = Depends(get_db)):
     s = _obtener(db, Servicio, servicio_id, "Servicio")
     if datos.jefe_id is not None:
@@ -78,7 +79,7 @@ def editar_servicio(servicio_id: int, datos: ServicioIn, db: Session = Depends(g
     return _servicio_out(s)
 
 
-@router.delete("/servicios/{servicio_id}", status_code=204)
+@router.delete("/servicios/{servicio_id}", status_code=204, dependencies=[Depends(requiere())])
 def eliminar_servicio(servicio_id: int, db: Session = Depends(get_db)):
     s = _obtener(db, Servicio, servicio_id, "Servicio")
     if db.scalar(select(exists().where(Paciente.servicio_id == servicio_id))):
@@ -96,7 +97,7 @@ def listar_medicos(solo_activos: bool = False, db: Session = Depends(get_db)):
     return db.scalars(q).all()
 
 
-@router.post("/medicos", response_model=MedicoOut, status_code=201)
+@router.post("/medicos", response_model=MedicoOut, status_code=201, dependencies=[Depends(requiere())])
 def crear_medico(datos: MedicoIn, db: Session = Depends(get_db)):
     m = Medico(**datos.model_dump())
     db.add(m)
@@ -105,7 +106,7 @@ def crear_medico(datos: MedicoIn, db: Session = Depends(get_db)):
     return m
 
 
-@router.put("/medicos/{medico_id}", response_model=MedicoOut)
+@router.put("/medicos/{medico_id}", response_model=MedicoOut, dependencies=[Depends(requiere())])
 def editar_medico(medico_id: int, datos: MedicoIn, db: Session = Depends(get_db)):
     m = _obtener(db, Medico, medico_id, "Médico")
     for k, v in datos.model_dump().items():
@@ -115,7 +116,7 @@ def editar_medico(medico_id: int, datos: MedicoIn, db: Session = Depends(get_db)
     return m
 
 
-@router.delete("/medicos/{medico_id}", status_code=204)
+@router.delete("/medicos/{medico_id}", status_code=204, dependencies=[Depends(requiere())])
 def eliminar_medico(medico_id: int, db: Session = Depends(get_db)):
     m = _obtener(db, Medico, medico_id, "Médico")
     if db.scalar(select(exists().where(Atencion.medico_id == medico_id))):
@@ -133,7 +134,7 @@ def listar_tipos(db: Session = Depends(get_db)):
     return db.scalars(select(TipoAtencion).order_by(TipoAtencion.id)).all()
 
 
-@router.post("/tipos-atencion", response_model=TipoAtencionOut, status_code=201)
+@router.post("/tipos-atencion", response_model=TipoAtencionOut, status_code=201, dependencies=[Depends(requiere())])
 def crear_tipo(datos: TipoAtencionIn, db: Session = Depends(get_db)):
     t = TipoAtencion(**datos.model_dump())
     db.add(t)
@@ -142,7 +143,7 @@ def crear_tipo(datos: TipoAtencionIn, db: Session = Depends(get_db)):
     return t
 
 
-@router.put("/tipos-atencion/{tipo_id}", response_model=TipoAtencionOut)
+@router.put("/tipos-atencion/{tipo_id}", response_model=TipoAtencionOut, dependencies=[Depends(requiere())])
 def editar_tipo(tipo_id: int, datos: TipoAtencionIn, db: Session = Depends(get_db)):
     t = _obtener(db, TipoAtencion, tipo_id, "Tipo de atención")
     for k, v in datos.model_dump().items():
@@ -152,7 +153,7 @@ def editar_tipo(tipo_id: int, datos: TipoAtencionIn, db: Session = Depends(get_d
     return t
 
 
-@router.delete("/tipos-atencion/{tipo_id}", status_code=204)
+@router.delete("/tipos-atencion/{tipo_id}", status_code=204, dependencies=[Depends(requiere())])
 def eliminar_tipo(tipo_id: int, db: Session = Depends(get_db)):
     t = _obtener(db, TipoAtencion, tipo_id, "Tipo de atención")
     if db.scalar(select(exists().where(Atencion.tipo_atencion_id == tipo_id))):

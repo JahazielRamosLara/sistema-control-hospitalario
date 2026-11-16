@@ -1,12 +1,14 @@
 import { useCallback, useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { api, type Atencion, type PacienteDetalle as Detalle } from '../api'
+import { useAuth } from '../auth'
 import { AtencionForm } from '../components/AtencionForm'
 import { PacienteForm } from '../components/PacienteForm'
 import { Cargando, ErrorMsg, Modal, RiesgoBadge, TriageBadge } from '../components/ui'
 import { fecha } from '../formato'
 
 export function PacienteDetalle() {
+  const { puede } = useAuth()
   const { id } = useParams()
   const navegar = useNavigate()
   const [p, setP] = useState<Detalle | null>(null)
@@ -64,15 +66,19 @@ export function PacienteDetalle() {
           </p>
         </div>
         <div className="botonera">
+          {puede('pacientes') && (
           <button className="btn" onClick={() => setEditar(true)}>
             Editar datos
           </button>
+          )}
           <a className="btn" href={api.urlExpedientePdf(p.id)} target="_blank" rel="noreferrer">
             Generar expediente PDF
           </a>
+          {puede('atenciones') && (
           <button className="btn btn-primario" onClick={() => setAtencion('nueva')}>
             Registrar atención
           </button>
+          )}
         </div>
       </header>
       <ErrorMsg error={error} />
@@ -136,8 +142,12 @@ export function PacienteDetalle() {
                     <td className="texto-largo">{a.plan_manejo}</td>
                     <td>{a.evento_critico && <span className="marca-critica">SÍ</span>}</td>
                     <td className="nowrap">
+                      {puede('atenciones') && (
                       <button className="btn-texto" onClick={() => setAtencion(a)}>Editar</button>
+                      )}
+                      {puede('eliminar') && (
                       <button className="btn-texto peligro" onClick={() => eliminarAtencion(a)}>Eliminar</button>
+                      )}
                     </td>
                   </tr>
                 ))}
@@ -148,7 +158,9 @@ export function PacienteDetalle() {
       </section>
 
       <div className="zona-peligro">
+        {puede('eliminar') && (
         <button className="btn btn-peligro" onClick={eliminar}>Eliminar paciente</button>
+        )}
       </div>
 
       <Modal titulo={`Editar ${p.expediente}`} abierto={editar} onCerrar={() => setEditar(false)}>

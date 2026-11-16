@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from 'react'
 import { api, type Medico, type Servicio, type TipoAtencion } from '../api'
+import { useAuth } from '../auth'
 import { useCatalogos } from '../catalogos'
 import { Campo, ErrorMsg, Modal } from '../components/ui'
 
@@ -42,6 +43,7 @@ function useEdicion<T>() {
 }
 
 function Medicos() {
+  const { puede } = useAuth()
   const { medicos, config, recargar } = useCatalogos()
   const { editando, setEditando, error, setError } = useEdicion<Medico>()
 
@@ -60,7 +62,9 @@ function Medicos() {
     <section className="tarjeta sin-relleno">
       <div className="barra-tabla">
         <span>{medicos.length} médicos</span>
+        {puede('catalogos') && (
         <button className="btn btn-primario" onClick={() => setEditando('nuevo')}>Agregar médico</button>
+        )}
       </div>
       <ErrorMsg error={error} />
       <div className="tabla-scroll">
@@ -78,8 +82,12 @@ function Medicos() {
                 <td>{m.turno}</td>
                 <td>{m.activo ? 'Activo' : 'Inactivo'}</td>
                 <td className="nowrap">
+                  {puede('catalogos') && (
                   <button className="btn-texto" onClick={() => setEditando(m)}>Editar</button>
+                  )}
+                  {puede('catalogos') && (
                   <button className="btn-texto peligro" onClick={() => eliminar(m)}>Eliminar</button>
+                  )}
                 </td>
               </tr>
             ))}
@@ -151,6 +159,7 @@ function FormMedico({ medico, turnos, onListo, onCancelar }: { medico?: Medico; 
 }
 
 function Servicios() {
+  const { puede } = useAuth()
   const { servicios, medicos, recargar } = useCatalogos()
   const { editando, setEditando, error, setError } = useEdicion<Servicio>()
   const totalCamas = servicios.reduce((s, x) => s + x.camas_censables, 0)
@@ -170,7 +179,9 @@ function Servicios() {
     <section className="tarjeta sin-relleno">
       <div className="barra-tabla">
         <span>{servicios.length} servicios · {totalCamas} camas censables</span>
+        {puede('catalogos') && (
         <button className="btn btn-primario" onClick={() => setEditando('nuevo')}>Agregar servicio</button>
+        )}
       </div>
       <ErrorMsg error={error} />
       <div className="tabla-scroll">
@@ -187,8 +198,12 @@ function Servicios() {
                 <td className="num">{s.camas_censables}</td>
                 <td>{s.jefe_nombre ?? '—'}</td>
                 <td className="nowrap">
+                  {puede('catalogos') && (
                   <button className="btn-texto" onClick={() => setEditando(s)}>Editar</button>
+                  )}
+                  {puede('catalogos') && (
                   <button className="btn-texto peligro" onClick={() => eliminar(s)}>Eliminar</button>
+                  )}
                 </td>
               </tr>
             ))}
@@ -256,6 +271,7 @@ function FormServicio({ servicio, medicos, onListo, onCancelar }: { servicio?: S
 }
 
 function Tipos() {
+  const { puede } = useAuth()
   const { tipos, recargar } = useCatalogos()
   const { editando, setEditando, error, setError } = useEdicion<TipoAtencion>()
 
@@ -274,7 +290,9 @@ function Tipos() {
     <section className="tarjeta sin-relleno">
       <div className="barra-tabla">
         <span>{tipos.length} tipos de atención</span>
+        {puede('catalogos') && (
         <button className="btn btn-primario" onClick={() => setEditando('nuevo')}>Agregar tipo</button>
+        )}
       </div>
       <ErrorMsg error={error} />
       <div className="tabla-scroll">
@@ -287,8 +305,12 @@ function Tipos() {
                 <td>{t.nombre}</td>
                 <td>{t.categoria}</td>
                 <td className="nowrap">
+                  {puede('catalogos') && (
                   <button className="btn-texto" onClick={() => setEditando(t)}>Editar</button>
+                  )}
+                  {puede('catalogos') && (
                   <button className="btn-texto peligro" onClick={() => eliminar(t)}>Eliminar</button>
+                  )}
                 </td>
               </tr>
             ))}

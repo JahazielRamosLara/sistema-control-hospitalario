@@ -94,3 +94,50 @@ class UmbralRiesgo(Base):
     semaforo: Mapped[str] = mapped_column(String(20))
     accion: Mapped[str | None] = mapped_column(String(200))
     alerta: Mapped[bool] = mapped_column(Boolean, default=False)
+
+
+# ---------------------------------------------------------------- Seguridad
+class Usuario(Base):
+    __tablename__ = "usuarios"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    usuario: Mapped[str] = mapped_column(String(40), unique=True, index=True)
+    nombre: Mapped[str] = mapped_column(String(160))
+    rol: Mapped[str] = mapped_column(String(20))
+    password_hash: Mapped[str] = mapped_column(String(255))
+    activo: Mapped[bool] = mapped_column(Boolean, default=True)
+    debe_cambiar_password: Mapped[bool] = mapped_column(Boolean, default=True)
+    intentos_fallidos: Mapped[int] = mapped_column(Integer, default=0)
+    bloqueado_hasta: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    ultimo_acceso: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    creado_en: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+
+
+class Sesion(Base):
+    """Sesión del lado del servidor. Solo se guarda el SHA-256 del token, nunca el token."""
+
+    __tablename__ = "sesiones"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    token_hash: Mapped[str] = mapped_column(String(64), unique=True, index=True)
+    usuario_id: Mapped[int] = mapped_column(ForeignKey("usuarios.id", ondelete="CASCADE"), index=True)
+    creada_en: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    expira_en: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    ultimo_uso: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    ip: Mapped[str | None] = mapped_column(String(64))
+    user_agent: Mapped[str | None] = mapped_column(String(255))
+
+    usuario: Mapped[Usuario] = relationship()
+
+
+class EventoAcceso(Base):
+    """Bitácora de accesos: inicios de sesión correctos y fallidos, cierres y cambios de contraseña."""
+
+    __tablename__ = "eventos_acceso"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    fecha: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), index=True)
+    usuario: Mapped[str] = mapped_column(String(40))
+    evento: Mapped[str] = mapped_column(String(40))
+    exito: Mapped[bool] = mapped_column(Boolean)
+    ip: Mapped[str | None] = mapped_column(String(64))

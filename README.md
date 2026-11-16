@@ -38,10 +38,15 @@ docker compose up -d --build
 
 Para actualizar después: `git pull` y `docker compose up -d --build`.
 
+**Primer acceso:** al arrancar por primera vez se crea el usuario `admin` con una contraseña temporal aleatoria.
+Consúltala con `docker compose logs backend` (busca «Usuario administrador creado»); el sistema pedirá cambiarla al
+entrar. Para fijarla tú, define `ADMIN_PASSWORD` en el `.env` de la raíz **antes** del primer arranque. Desde
+**Usuarios** el administrador da de alta al resto del personal.
+
 | Servicio | URL / puerto |
 |---|---|
 | Aplicación web | <http://localhost:8080> |
-| API + documentación | <http://localhost:8000/docs> |
+| API + documentación | <http://localhost:8000/docs> (solo desde este equipo) |
 | PostgreSQL | `localhost:5433` · usuario `hospital` · contraseña `hospital` · base `control_hospitalario` |
 
 Al primer arranque se crean las tablas y se cargan los datos de ejemplo (si la base está vacía).
@@ -97,8 +102,23 @@ Las pruebas verifican, entre otras cosas, que los indicadores coinciden con el M
 `python scripts/exportar_excel.py "D:\OneDrive\Sistema de control hospitalario v1.xlsm"`.
 Son datos **ficticios**; `python -m app.seed --reset` borra todo y los vuelve a cargar.
 
+## Seguridad
+
+| Aspecto | Implementación |
+|---|---|
+| Contraseñas | Argon2id; mínimo 10 caracteres con letras y números, distinta del usuario. Las cuentas nuevas y restablecidas reciben una contraseña temporal que debe cambiarse al entrar. |
+| Sesiones | Token aleatorio de 256 bits en cookie `HttpOnly`, `SameSite=Strict`, ruta `/api` (inaccesible para JavaScript). En la base solo se guarda su SHA-256. Expiran tras 30 min de inactividad o 12 h, y se revocan al salir, cambiar o restablecer la contraseña o desactivar la cuenta. |
+| Fuerza bruta | Bloqueo de la cuenta 15 min tras 5 fallos; límite de intentos por IP; el mensaje de error no revela si el usuario existe. |
+| CSRF | Toda petición que modifica datos exige la cabecera `X-Requested-With: fetch`, más la cookie `SameSite=Strict`. |
+| Permisos | Por perfil, aplicados en el backend: **admin** (todo, usuarios, catálogos, escala de riesgo, eliminar), **admisión** (alta y edición de pacientes), **médico/enfermería** (registrar y editar atenciones), **jefatura** (consulta y PDF). Todos los perfiles pueden consultar. |
+| Auditoría | Bitácora de accesos (inicios correctos y fallidos, bloqueos, cambios de contraseña) en **Usuarios → Bitácora de accesos**. |
+| Red | Postgres y la API solo escuchan en `127.0.0.1`; desde fuera solo se expone nginx (:8080), con cabeceras CSP, `X-Frame-Options`, `nosniff`. Las respuestas de la API no se guardan en caché. |
+
+Si la app se publica fuera de la red local, sírvela por **HTTPS** (p. ej. un proxy con certificado delante de nginx)
+y define `COOKIE_SECURE=true`. Cambia también `POSTGRES_PASSWORD`.
+
 ## Limitaciones (heredadas del documento, §13)
 
-Aún no hay autenticación, control de acceso por perfil ni bitácora de auditoría, y la escala de riesgo es acumulativa
-y sin ventana temporal. No es un expediente clínico electrónico certificado (NOM-024-SSA3-2012); con datos reales
+La auditoría cubre los accesos pero aún no registra quién modificó cada registro clínico, y la escala de riesgo es
+acumulativa y sin ventana temporal. No es un expediente clínico electrónico certificado (NOM-024-SSA3-2012); con datos reales
 aplican NOM-004-SSA3-2012 y la legislación de protección de datos personales sensibles.

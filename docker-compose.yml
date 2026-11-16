@@ -13,7 +13,8 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-hospital}
       TZ: America/Mexico_City
     ports:
-      - "${DB_PORT:-5433}:5432" # 5433 para no chocar con un Postgres instalado en el equipo
+      # Solo accesible desde este equipo; 5433 para no chocar con un Postgres instalado localmente
+      - "127.0.0.1:${DB_PORT:-5433}:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:
@@ -29,12 +30,18 @@ services:
       DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-hospital}:${POSTGRES_PASSWORD:-hospital}@db:5432/control_hospitalario
       NOMBRE_HOSPITAL: ${NOMBRE_HOSPITAL:-Sistema de Control Hospitalario}
       SEED_DATOS_EJEMPLO: ${SEED_DATOS_EJEMPLO:-1}
+      # Administrador inicial (solo si no hay usuarios). Sin ADMIN_PASSWORD se genera una y se muestra en el log.
+      ADMIN_USUARIO: ${ADMIN_USUARIO:-admin}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-}
+      # true si se sirve por HTTPS
+      COOKIE_SECURE: ${COOKIE_SECURE:-false}
       TZ: America/Mexico_City
     depends_on:
       db:
         condition: service_healthy
     ports:
-      - "${API_PORT:-8000}:8000"
+      # La API se usa a través de nginx (:8080); este puerto queda solo para /docs en local
+      - "127.0.0.1:${API_PORT:-8000}:8000"
 
   frontend:
     build: ./frontend

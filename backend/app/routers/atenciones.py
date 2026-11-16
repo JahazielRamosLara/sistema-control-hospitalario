@@ -6,6 +6,7 @@ from sqlalchemy import func, or_, select
 from sqlalchemy.orm import Session, selectinload
 
 from ..database import get_db
+from ..seguridad import requiere
 from ..models import Atencion, Medico, Paciente, TipoAtencion
 from ..riesgo import eventos_por_paciente, tabla
 from ..schemas import AtencionIn, AtencionOut, PaginaAtenciones
@@ -98,7 +99,7 @@ def obtener(atencion_id: int, db: Session = Depends(get_db)):
     return _salida(db, [_cargar(db, atencion_id)])[0]
 
 
-@router.post("", response_model=AtencionOut, status_code=201)
+@router.post("", response_model=AtencionOut, status_code=201, dependencies=[Depends(requiere("medico"))])
 def crear(datos: AtencionIn, db: Session = Depends(get_db)):
     _validar(db, datos)
     valores = datos.model_dump()
@@ -109,7 +110,7 @@ def crear(datos: AtencionIn, db: Session = Depends(get_db)):
     return _salida(db, [_cargar(db, a.id)])[0]
 
 
-@router.put("/{atencion_id}", response_model=AtencionOut)
+@router.put("/{atencion_id}", response_model=AtencionOut, dependencies=[Depends(requiere("medico"))])
 def editar(atencion_id: int, datos: AtencionIn, db: Session = Depends(get_db)):
     a = _cargar(db, atencion_id)
     _validar(db, datos)
@@ -122,7 +123,7 @@ def editar(atencion_id: int, datos: AtencionIn, db: Session = Depends(get_db)):
     return _salida(db, [_cargar(db, atencion_id)])[0]
 
 
-@router.delete("/{atencion_id}", status_code=204)
+@router.delete("/{atencion_id}", status_code=204, dependencies=[Depends(requiere())])
 def eliminar(atencion_id: int, db: Session = Depends(get_db)):
     a = _cargar(db, atencion_id)
     db.delete(a)

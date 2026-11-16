@@ -126,6 +126,36 @@ export interface AtencionIn {
   evento_critico: boolean
 }
 
+export type Rol = 'admin' | 'jefatura' | 'medico' | 'admision'
+
+export interface UsuarioActual {
+  id: number
+  usuario: string
+  nombre: string
+  rol: Rol
+  rol_nombre: string
+  debe_cambiar_password: boolean
+}
+
+export interface Usuario {
+  id: number
+  usuario: string
+  nombre: string
+  rol: Rol
+  activo: boolean
+  debe_cambiar_password: boolean
+  bloqueado: boolean
+  ultimo_acceso: string | null
+}
+
+export interface EventoAcceso {
+  fecha: string
+  usuario: string
+  evento: string
+  exito: boolean
+  ip: string | null
+}
+
 export class ApiError extends Error {
   status: number
   constructor(status: number, message: string) {
@@ -148,11 +178,16 @@ function mensaje(detail: unknown): string {
 }
 
 async function request<T>(method: string, url: string, body?: unknown): Promise<T> {
+  const headers: Record<string, string> = { 'X-Requested-With': 'fetch' } // cabecera anti-CSRF
+  if (body !== undefined) headers['Content-Type'] = 'application/json'
   const res = await fetch(`/api${url}`, {
     method,
-    headers: body !== undefined ? { 'Content-Type': 'application/json' } : undefined,
+    headers,
+    credentials: 'same-origin',
     body: body !== undefined ? JSON.stringify(body) : undefined,
   })
+  // Sesión expirada o revocada: la app vuelve a la pantalla de login
+  if (res.status === 401 && !url.startsWith('/auth/login')) window.dispatchEvent(new Event('sesion-expirada'))
   if (!res.ok) {
     let detalle: unknown = res.statusText
     try {
@@ -176,6 +211,22 @@ function qs(params: Record<string, string | number | boolean | null | undefined>
 }
 
 export const api = {
+  login: (usuario: string, password: string) => request<UsuarioActual>('POST', '/auth/login', { usuario, password }),
+  logout: () => request<void>('POST', '/auth/logout'),
+  yo: () => request<UsuarioActual>('GET', '/auth/me'),
+  cambiarPassword: (actual: string, nueva: string) =>
+    request<UsuarioActual>('POST', '/auth/cambiar-password', { actual, nueva }),
+
+  usuarios: () => request<Usuario[]>('GET', '/usuarios'),
+  roles: () => request<Record<Rol, string>>('GET', '/usuarios/roles'),
+  crearUsuario: (u: { usuario: string; nombre: string; rol: Rol }) =>
+    request<{ usuario: Usuario; password_temporal: string }>('POST', '/usuarios', u),
+  editarUsuario: (id: number, u: { nombre: string; rol: Rol; activo: boolean }) =>
+    request<Usuario>('PUT', `/usuarios/${id}`, u),
+  restablecerPassword: (id: number) =>
+    request<{ usuario: Usuario; password_temporal: string }>('POST', `/usuarios/${id}/restablecer-password`),
+  accesos: (limit = 200) => request<EventoAcceso[]>('GET', `/usuarios/accesos?limit=${limit}`),
+
   config: () => request<Config>('GET', '/config'),
   indicadores: () => request<Indicadores>('GET', '/indicadores'),
 

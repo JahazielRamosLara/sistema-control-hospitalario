@@ -272,3 +272,30 @@ tr.inactivo td { color: var(--tenue); text-decoration: line-through; text-decora
   .kpi:nth-child(n + 3) { border-top: 1px solid var(--linea-suave); }
   .rejilla { grid-template-columns: 1fr; }
 }
+
+/* ---------- Acceso y sesión ---------- */
+.cabecera-derecha { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.sesion { display: flex; align-items: center; gap: 6px; padding-left: 20px; border-left: 1px solid var(--linea-suave); }
+.sesion > span { margin-right: 6px; line-height: 1.2; }
+.sesion strong { display: block; font-size: 0.88rem; }
+.sesion small { color: var(--tenue); font-size: 0.75rem; }
+.acceso { min-height: 100vh; display: grid; place-items: center; padding: 24px 16px; }
+.acceso-hoja {
+  width: 100%; max-width: 400px; background: var(--hoja); border: 1px solid var(--linea);
+  border-top: 4px solid var(--acento); padding: 26px 26px 20px; display: flex; flex-direction: column; gap: 16px;
+}
+.acceso-hoja .marca { margin-bottom: 6px; }
+.btn-bloque { width: 100%; justify-content: center; padding: 10px; }
+.alerta-aviso { border: 1px solid var(--sem-amarillo); border-left-width: 4px; background: var(--resalte); padding: 9px 12px; margin: 0; font-size: 0.9rem; }
+.reglas { list-style: none; margin: 0; padding: 0; font-size: 0.82rem; color: var(--tenue); display: grid; gap: 3px; }
+.reglas li::before { content: '○  '; }
+.reglas li.ok { color: var(--sem-verde); }
+.reglas li.ok::before { content: '●  '; }
+.password-temporal {
+  display: block; font-family: var(--mono); font-size: 1.25rem; letter-spacing: 0.06em; text-align: center;
+  padding: 14px; border: 1px dashed var(--linea); background: var(--papel); user-select: all;
+}
+fieldset.sin-marco { border: 0; padding: 0; margin: 0; min-width: 0; }
+@media (max-width: 640px) {
+  .sesion { padding-left: 0; border-left: none; }
+}

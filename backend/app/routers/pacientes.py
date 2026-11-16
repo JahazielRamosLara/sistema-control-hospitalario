@@ -8,6 +8,7 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session, selectinload
 
 from ..database import get_db
+from ..seguridad import requiere
 from ..models import Atencion, Medico, Paciente, Servicio
 from ..pdf import expediente_pdf
 from ..riesgo import atenciones_por_paciente, eventos_por_paciente, tabla
@@ -106,7 +107,7 @@ def obtener(paciente_id: int, db: Session = Depends(get_db)):
     return _detalle(db, _cargar(db, paciente_id))
 
 
-@router.post("", response_model=PacienteOut, status_code=201)
+@router.post("", response_model=PacienteOut, status_code=201, dependencies=[Depends(requiere("admision"))])
 def crear(datos: PacienteIn, db: Session = Depends(get_db)):
     _validar_refs(db, datos)
     for _ in range(3):  # reintenta si otro usuario tomó el mismo consecutivo
@@ -123,7 +124,7 @@ def crear(datos: PacienteIn, db: Session = Depends(get_db)):
     return paciente_out(p, 0, tabla(db), 0)
 
 
-@router.put("/{paciente_id}", response_model=PacienteOut)
+@router.put("/{paciente_id}", response_model=PacienteOut, dependencies=[Depends(requiere("admision"))])
 def editar(paciente_id: int, datos: PacienteIn, db: Session = Depends(get_db)):
     p = _cargar(db, paciente_id)
     _validar_refs(db, datos)
@@ -136,7 +137,7 @@ def editar(paciente_id: int, datos: PacienteIn, db: Session = Depends(get_db)):
     return paciente_out(p, eventos, tabla(db), total)
 
 
-@router.delete("/{paciente_id}", status_code=204)
+@router.delete("/{paciente_id}", status_code=204, dependencies=[Depends(requiere())])
 def eliminar(paciente_id: int, db: Session = Depends(get_db)):
     p = _cargar(db, paciente_id)
     db.delete(p)

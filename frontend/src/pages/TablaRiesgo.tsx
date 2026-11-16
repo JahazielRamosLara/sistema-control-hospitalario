@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
 import { api, type Umbral } from '../api'
+import { useAuth } from '../auth'
 import { useCatalogos } from '../catalogos'
 import { Cargando, ErrorMsg, RiesgoBadge } from '../components/ui'
 
 export function TablaRiesgo() {
   const { config } = useCatalogos()
+  const editable = useAuth().puede('catalogos')
   const [filas, setFilas] = useState<Umbral[] | null>(null)
   const [error, setError] = useState<unknown>(null)
   const [aviso, setAviso] = useState('')
@@ -53,7 +55,7 @@ export function TablaRiesgo() {
             Escala acumulativa e histórica: el nivel es el último umbral que no supera los eventos críticos del paciente.
           </p>
         </div>
-        <div className="botonera">
+        <div className="botonera" hidden={!editable}>
           <button
             className="btn"
             onClick={() => {
@@ -71,7 +73,9 @@ export function TablaRiesgo() {
       <ErrorMsg error={error} />
       {aviso && <div className="alerta-ok">{aviso}</div>}
 
+      {!editable && <p className="nota">Solo el administrador puede modificar la escala.</p>}
       <section className="tarjeta sin-relleno">
+        <fieldset className="sin-marco" disabled={!editable}>
         <div className="tabla-scroll">
           <table className="tabla tabla-edicion">
             <thead>
@@ -114,6 +118,7 @@ export function TablaRiesgo() {
             </tbody>
           </table>
         </div>
+        </fieldset>
       </section>
       <p className="nota">
         Los umbrales dependen del perfil del hospital. Al guardar se ordenan de menor a mayor; el primero siempre es 0 y no

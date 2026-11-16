@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { api, type Indicadores } from '../api'
+import { useAuth } from '../auth'
 import { AtencionForm } from '../components/AtencionForm'
 import { PacienteForm } from '../components/PacienteForm'
 import { Cargando, ErrorMsg, Kpi, Modal, RiesgoBadge } from '../components/ui'
 
 export function Tablero() {
+  const { puede } = useAuth()
   const [datos, setDatos] = useState<Indicadores | null>(null)
   const [error, setError] = useState<unknown>(null)
   const [modal, setModal] = useState<'paciente' | 'atencion' | null>(null)
@@ -27,12 +29,16 @@ export function Tablero() {
           <p className="subtitulo">Indicadores de operación al {new Date().toLocaleDateString('es-MX')}</p>
         </div>
         <div className="botonera">
+          {puede('pacientes') && (
           <button className="btn" onClick={() => setModal('paciente')}>
             Alta de paciente
           </button>
+          )}
+          {puede('atenciones') && (
           <button className="btn btn-primario" onClick={() => setModal('atencion')}>
             Registrar atención
           </button>
+          )}
         </div>
       </header>
 

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { api, type Atencion } from '../api'
+import { useAuth } from '../auth'
 import { useCatalogos } from '../catalogos'
 import { AtencionForm } from '../components/AtencionForm'
 import { Cargando, ErrorMsg, Modal, RiesgoBadge, TriageBadge } from '../components/ui'
@@ -9,6 +10,7 @@ import { fecha } from '../formato'
 const POR_PAGINA = 25
 
 export function Seguimiento() {
+  const { puede } = useAuth()
   const { servicios, medicos, config } = useCatalogos()
   const [filtros, setFiltros] = useState({
     q: '',
@@ -51,9 +53,11 @@ export function Seguimiento() {
           <h1>Seguimiento clínico</h1>
           <p className="subtitulo">Bitácora de atenciones · cada fila es una atención prestada a un paciente</p>
         </div>
+        {puede('atenciones') && (
         <button className="btn btn-primario" onClick={() => setModal('nueva')}>
           Registrar atención
         </button>
+        )}
       </header>
 
       <div className="filtros">
@@ -133,7 +137,7 @@ export function Seguimiento() {
                     <td className="texto-largo">{a.nota_clinica}</td>
                     <td>{a.evento_critico && <span className="marca-critica">SÍ</span>}</td>
                     <td><RiesgoBadge nivel={a.nivel_riesgo} semaforo={a.semaforo} eventos={a.total_eventos_criticos} /></td>
-                    <td><button className="btn-texto" onClick={() => setModal(a)}>Editar</button></td>
+                    <td>{puede('atenciones') && <button className="btn-texto" onClick={() => setModal(a)}>Editar</button>}</td>
                   </tr>
                 ))}
               </tbody>
